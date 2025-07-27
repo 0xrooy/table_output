@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Table Output</title>
+    <style>
+        table { border-collapse: collapse; margin-bottom: 20px; }
+        td, th { border: 1px solid #333; padding: 8px 12px; }
+    </style>
+</head>
+<body>
+    <h1>CSV Table Viewer</h1>
+    <p><a href="/download">Click here to download the table</a></p>
+
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% else %}
+        <h2>Table 1: Raw CSV Data</h2>
+        <table>
+            <tr><th>Index #</th><th>Value</th></tr>
+            {% for key, val in table_data %}
+                <tr><td>{{ key }}</td><td>{{ val }}</td></tr>
+            {% endfor %}
+        </table>
+
+        <h2>Table 2: Processed Values</h2>
+        <table>
+            <tr><th>Category</th><th>Value</th></tr>
+            <tr><td>Alpha</td><td>{{ table2.Alpha }}</td></tr>
+            <tr><td>Beta</td><td>{{ table2.Beta }}</td></tr>
+            <tr><td>Charlie</td><td>{{ table2.Charlie }}</td></tr>
+        </table>
+    {% endif %}
+</body>
+</html>
