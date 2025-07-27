@@ -6,6 +6,16 @@ import csv
 app = FastAPI()
 templates = Jinja2Templates(directory="templates")
 
+from fastapi.responses import HTMLResponse
+
+@app.get("/", response_class=HTMLResponse)
+async def root():
+    return """
+    <h1>Deployed Successfully</h1>
+    <p>Check your CSV output: <a href='/csv-table'>CSV Table</a></p>
+    """
+
+
 @app.get("/csv-table", response_class=HTMLResponse)
 def show_table(request: Request):
     file_path = "Table_Input.csv"
