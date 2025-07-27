@@ -8,7 +8,7 @@ templates = Jinja2Templates(directory="templates")
 
 from fastapi.responses import HTMLResponse
 
-@app.get("/csv-table", response_class=HTMLResponse)
+@app.get("/", response_class=HTMLResponse)
 def show_table(request: Request):
     file_path = "Table_Input.csv"
     table_data = []
